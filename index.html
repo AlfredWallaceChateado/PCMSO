@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Consulta de Agendamento</title>
+</head>
+<body>
+  <h2>Consulte seu agendamento</h2>
+  <label for="nome">Digite seu nome completo ou parte dele:</label><br>
+  <input type="text" id="nome" size="40" />
+  <button onclick="consultar()">Consultar</button>
+
+  <div id="resultado" style="margin-top:20px;"></div>
+
+  <script>
+    function consultar() {
+      var nome = document.getElementById("nome").value.trim();
+      if (!nome) {
+        alert("Por favor, digite o nome.");
+        return;
+      }
+      
+      var url = 'https://script.google.com/macros/s/AKfycbwdWbmW8QV63NbEEpFkoDuBsqWaHD3YVsgd5tQ-SawBmA9NIi8i98wx-lFLzArvh5Mr/exec' + '?nome=' + encodeURIComponent(nome);
+      
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          var div = document.getElementById("resultado");
+          if (data.error) {
+            div.innerHTML = '<span style="color:red;">' + data.error + '</span>';
+          } else {
+            div.innerHTML = 
+              '<b>Nome:</b> ' + data.nome + '<br>' +
+              '<b>Status:</b> ' + data.message + '<br>' +
+              '<b>Turno:</b> ' + (data.turno ? data.turno : 'Não disponível') + '<br>' +
+              '<b>Horário:</b> ' + (data.horario ? data.horario : 'Não disponível') + '<br>' +
+              '<b>Local:</b> ' + (data.local ? data.local : 'Não disponível');
+          }
+        })
+        .catch(error => {
+          document.getElementById("resultado").innerHTML = '<span style="color:red;">Erro ao consultar. Tente novamente.</span>';
+          console.error('Erro:', error);
+        });
+    }
+  </script>
+</body>
+</html>
