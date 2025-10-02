@@ -14,17 +14,21 @@
   <script>
     function consultar() {
       var nome = document.getElementById("nome").value.trim();
+      var div = document.getElementById("resultado");
+
       if (!nome) {
         alert("Por favor, digite o nome.");
         return;
       }
       
-      var url = 'https://script.google.com/macros/s/AKfycbyWXywabcrK0pBz5uh9g40-OP5NQ4ISjAq7mCkhKZPGhUtpWSYeOa68cIKs24fRftnb/exec' + '?nome=' + encodeURIComponent(nome);
+      // Mostra feedback de carregamento
+      div.innerHTML = '<em>Carregando...</em>';
+      
+      var url = 'https://script.google.com/macros/s/AKfycbwdWbmW8QV63NbEEpFkoDuBsqWaHD3YVsgd5tQ-SawBmA9NIi8i98wx-lFLzArvh5Mr/exec' + '?nome=' + encodeURIComponent(nome);
       
       fetch(url)
         .then(response => response.json())
         .then(data => {
-          var div = document.getElementById("resultado");
           if (data.error) {
             div.innerHTML = '<span style="color:red;">' + data.error + '</span>';
           } else {
@@ -38,12 +42,10 @@
           }
         })
         .catch(error => {
-          document.getElementById("resultado").innerHTML = '<span style="color:red;">Erro ao consultar. Tente novamente.</span>';
+          div.innerHTML = '<span style="color:red;">Erro ao consultar. Tente novamente.</span>';
           console.error('Erro:', error);
         });
     }
   </script>
 </body>
 </html>
-
-
