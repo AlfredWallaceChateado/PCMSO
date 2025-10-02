@@ -28,9 +28,11 @@
           if (data.error) {
             div.innerHTML = '<span style="color:red;">' + data.error + '</span>';
           } else {
-            div.innerHTML = '<b>Data:</b> ' + data.data + '<br>' +
-                            '<b>Turno:</b> ' + data.turno + '<br>' +
-                            '<b>Horário:</b> ' + data.horario;
+            div.innerHTML = 
+              '<b>Data:</b> ' + data.data + '<br>' +
+              '<b>Turno:</b> ' + data.turno + '<br>' +
+              '<b>Horário:</b> ' + data.horario + '<br>' +
+              '<b>Local:</b> ' + (data.local ? data.local : 'Não disponível');
           }
         })
         .catch(error => {
@@ -41,5 +43,3 @@
   </script>
 </body>
 </html>
-
-
