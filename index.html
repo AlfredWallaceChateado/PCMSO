@@ -5,7 +5,7 @@
 </head>
 <body>
   <h2>Consulte seu agendamento</h2>
-  <label for="nome">Digite seu nome completo ou parte dele:</label><br>
+  <label for="nome">Digite seu nome completo ou parte dele (DEBUG):</label><br>
   <input type="text" id="nome" size="40" />
   <button onclick="consultar()">Consultar</button>
 
@@ -24,7 +24,7 @@
       // Mostra feedback de carregamento
       div.innerHTML = '<em>Carregando...</em>';
       
-      var url = 'https://script.google.com/macros/s/AKfycbxJA31V0dJcNJ0b7rNWxmszSXQE_Syxt139jfpqAtmRuACmcGbZCxo01e9u9UNNp7DL/exec' + '?nome=' + encodeURIComponent(nome);
+      var url = 'https://script.google.com/macros/s/AKfycbxLLS64rRJfQo32K5nikNlWYSxU8NRJrKKmA3h0KrgDpQsWObA9JbyX8U3Qf0c-cdh_/exec' + '?nome=' + encodeURIComponent(nome);
       
       fetch(url)
         .then(response => response.json())
@@ -48,5 +48,6 @@
   </script>
 </body>
 </html>
+
 
 
