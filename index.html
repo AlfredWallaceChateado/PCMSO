@@ -32,12 +32,14 @@
           if (data.error) {
             div.innerHTML = '<span style="color:red;">' + data.error + '</span>';
           } else {
-            div.innerHTML = 
+            div.innerHTML =
               '<b>Nome:</b> ' + data.nome + '<br>' +
-              '<b>Status:</b> ' + data.message + '<br>' +
-              '<b>Turno:</b> ' + (data.turno ? data.turno : 'Não disponível') + '<br>' +
+              '<b>Data de nascimento:</b> ' + (data.dataNascimento ? data.dataNascimento : 'Não disponível') + '<br>' +
+              '<b>CPF:</b> ' + (data.cpf ? data.cpf : 'Não disponível') + '<br>' +
+              '<b>Data da consulta:</b> ' + (data.dataConsulta ? data.dataConsulta : 'Não disponível') + '<br>' +
               '<b>Horário:</b> ' + (data.horario ? data.horario : 'Não disponível') + '<br>' +
-              '<b>Local:</b> ' + (data.local ? data.local : 'Não disponível');
+              '<b>Sala:</b> ' + (data.sala ? data.sala : 'Não disponível') + '<br>' +
+              '<b>Observações:</b> ' + (data.observacoes ? data.observacoes : 'Nenhuma');
           }
         })
         .catch(error => {
@@ -48,10 +50,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
