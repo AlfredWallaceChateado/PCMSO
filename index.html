@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Consulta de Agendamento</title>
+  <title>[translate:Consulta de Agendamento]</title>
 </head>
 <body>
-  <h2>Consulte seu agendamento</h2>
-  <label for="nome">Digite seu nome completo ou parte dele:</label><br>
+  <h2>[translate:Consulte seu agendamento]</h2>
+  <label for="nome">[translate:Digite seu nome completo ou parte dele:]</label><br>
   <input type="text" id="nome" size="40" />
-  <button onclick="consultar()">Consultar</button>
+  <button onclick="consultar()">[translate:Consultar]</button>
 
   <div id="resultado" style="margin-top:20px;"></div>
 
@@ -17,14 +17,14 @@
       var div = document.getElementById("resultado");
 
       if (!nome) {
-        alert("Por favor, digite o nome.");
+        alert("[translate:Por favor, digite o nome.]");
         return;
       }
       
-      // Mostra feedback de carregamento
-      div.innerHTML = '<em>Carregando...</em>';
+      // [translate:Mostra feedback de carregamento]
+      div.innerHTML = '<em>[translate:Carregando...]</em>';
       
-      var url = 'https://script.google.com/macros/s/AKfycbwB2sj1zBqG8aiBprZtB-ZNmlAkNHTw3jtsRw5v5hrPSqTTFp26CRhwdBRH-d4pseUx/exec' + '?nome=' + encodeURIComponent(nome);
+      var url = 'https://script.google.com/macros/s/AKfycbzwON8TeQbld12L3GhgYQ4y5v5KYk7ok3unMVclP324Y06HzeSNwFxgNdjUGthP7Xoe/exec' + '?nome=' + encodeURIComponent(nome);
       
       fetch(url)
         .then(response => response.json())
@@ -33,22 +33,19 @@
             div.innerHTML = '<span style="color:red;">' + data.error + '</span>';
           } else {
             div.innerHTML =
-              '<b>Nome:</b> ' + data.nome + '<br>' +
-              '<b>Data de nascimento:</b> ' + (data.dataNascimento ? data.dataNascimento : 'Não disponível') + '<br>' +
-              '<b>Data da consulta:</b> ' + (data.dataConsulta ? data.dataConsulta : 'Não disponível') + '<br>' +
-              '<b>Horário:</b> ' + (data.horario ? data.horario : 'Não disponível') + '<br>' +
-              '<b>Sala:</b> ' + (data.sala ? data.sala : 'Não disponível') + '<br>' +
-              '<b>Observações:</b> ' + (data.observacoes ? data.observacoes : 'Nenhuma');
+              '<b>[translate:Nome]:</b> ' + data.nome + '<br>' +
+              '<b>[translate:Data de nascimento]:</b> ' + (data.dataNascimento ? data.dataNascimento : '[translate:Não disponível]') + '<br>' +
+              '<b>[translate:Data da consulta]:</b> ' + (data.dataConsulta ? data.dataConsulta : '[translate:Não disponível]') + '<br>' +
+              '<b>[translate:Horário]:</b> ' + (data.horario ? data.horario : '[translate:Não disponível]') + '<br>' +
+              '<b>[translate:Sala]:</b> ' + (data.sala ? data.sala : '[translate:Não disponível]') + '<br>' +
+              '<b>[translate:Observações]:</b> ' + (data.observacoes ? data.observacoes : '[translate:Nenhuma]');
           }
         })
         .catch(error => {
-          div.innerHTML = '<span style="color:red;">Erro ao consultar. Tente novamente.</span>';
-          console.error('Erro:', error);
+          div.innerHTML = '<span style="color:red;">[translate:Erro ao consultar. Tente novamente.]</span>';
+          console.error('[translate:Erro]:', error);
         });
     }
   </script>
 </body>
 </html>
-
-
-
