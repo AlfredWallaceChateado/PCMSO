@@ -24,7 +24,7 @@
       // Mostra feedback de carregamento
       div.innerHTML = '<em>Carregando...</em>';
       
-      var url = 'https://script.google.com/macros/s/AKfycbw2hMFNwFMY8aVTobkWnJLW1ij2W4Bvte8azjePsYJmKtKFfOtio6o-ZF_el0aalBB6/exec' + '?nome=' + encodeURIComponent(nome);
+      var url = 'https://script.google.com/macros/s/AKfycbxd2yC5V_taHzqD9YCcjbxQS1Jf86yYCZap7xhCrJpFQRWUngx2eeqANLArLwa_5aD4/exec' + '?nome=' + encodeURIComponent(nome);
       
       fetch(url)
         .then(response => response.json())
@@ -35,7 +35,6 @@
             div.innerHTML =
               '<b>Nome:</b> ' + data.nome + '<br>' +
               '<b>Data de nascimento:</b> ' + (data.dataNascimento ? data.dataNascimento : 'Não disponível') + '<br>' +
-              '<b>CPF:</b> ' + (data.cpf ? data.cpf : 'Não disponível') + '<br>' +
               '<b>Data da consulta:</b> ' + (data.dataConsulta ? data.dataConsulta : 'Não disponível') + '<br>' +
               '<b>Horário:</b> ' + (data.horario ? data.horario : 'Não disponível') + '<br>' +
               '<b>Sala:</b> ' + (data.sala ? data.sala : 'Não disponível') + '<br>' +
@@ -50,4 +49,5 @@
   </script>
 </body>
 </html>
+
 
